@@ -19,16 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from fastapi import (
-    APIRouter,
-    BackgroundTasks,
-    File,
-    HTTPException,
-    Query,
-    Request,
-    Response,
-    UploadFile,
-)
+from fastapi import APIRouter, BackgroundTasks, File, HTTPException, Query, Request, UploadFile
 
 from app.models.document import (
     BatchUploadRequest,
@@ -400,13 +391,12 @@ async def reindex_document(
 @router.delete(
     "/documents/{document_id}",
     status_code=204,
-    response_class=Response,
     summary="Delete a document and its chunks",
 )
 async def delete_document(
     request: Request,
     document_id: str,
-) -> Response:
+) -> None:
     """Remove a document record, its stored chunks, and the uploaded file."""
     mongo = _mongo(request)
     doc = await mongo.find_by_id(DOCUMENTS_COLLECTION, document_id)
@@ -427,4 +417,3 @@ async def delete_document(
 
     # Delete document record
     await mongo.delete_by_id(DOCUMENTS_COLLECTION, document_id)
-    return Response(status_code=204)

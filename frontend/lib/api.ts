@@ -14,8 +14,7 @@ import type {
 } from "./types";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL ||
-  (typeof window === "undefined" ? "http://backend:8888" : "");
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8888";
 
 /* ── Persistent client-side cache (survives SPA navigation) ──────── */
 

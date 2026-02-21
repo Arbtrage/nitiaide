@@ -5,13 +5,11 @@ WORKDIR /app
 # System dependencies for PDF generation and general build tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    pkg-config \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
-    libgdk-pixbuf-2.0-0 \
+    libgdk-pixbuf2.0-0 \
     libffi-dev \
     libcairo2 \
-    libcairo2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -22,6 +20,13 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p uploads chroma_db data/compliance_rules
 
+# Copy compliance rules from repo-level NFRA_Challenge_Data if available
+# (docker-compose also mounts them, but this ensures they're baked in)
+COPY data/compliance_rules/ data/compliance_rules/
+
+# Make entrypoint executable
+RUN chmod +x entrypoint.sh
+
 EXPOSE 8888
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8888"]
+ENTRYPOINT ["./entrypoint.sh"]
