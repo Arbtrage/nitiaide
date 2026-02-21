@@ -223,9 +223,10 @@ async def get_summary(report_id: str, request: Request) -> dict[str, Any]:
 @router.delete(
     "/{report_id}",
     status_code=204,
+    response_class=Response,
     summary="Delete a compliance report",
 )
-async def delete_report(report_id: str, request: Request) -> None:
+async def delete_report(report_id: str, request: Request) -> Response:
     """Delete a compliance report and any associated files."""
     mongo = _mongo(request)
 
@@ -235,3 +236,4 @@ async def delete_report(report_id: str, request: Request) -> None:
         deleted = await mongo.delete_by_id(_REPORTS_COLLECTION, report_id)
     if not deleted:
         raise HTTPException(status_code=404, detail=f"Report not found: {report_id}")
+    return Response(status_code=204)

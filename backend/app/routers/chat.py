@@ -16,7 +16,16 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import APIRouter, HTTPException, Query, Request, UploadFile, File, Form
+from fastapi import (
+    APIRouter,
+    HTTPException,
+    Query,
+    Request,
+    Response,
+    UploadFile,
+    File,
+    Form,
+)
 from pydantic import BaseModel, Field
 
 from app.models.chat import (
@@ -358,14 +367,16 @@ async def get_session(session_id: str, request: Request) -> dict[str, Any]:
 @router.delete(
     "/sessions/{session_id}",
     status_code=204,
+    response_class=Response,
     summary="Delete a chat session",
 )
-async def delete_session(session_id: str, request: Request) -> None:
+async def delete_session(session_id: str, request: Request) -> Response:
     """Delete a chat session and all its messages."""
     mongo = _mongo(request)
     deleted = await mongo.delete_one(_SESSIONS_COLLECTION, {"session_id": session_id})
     if not deleted:
         raise HTTPException(status_code=404, detail=f"Session not found: {session_id}")
+    return Response(status_code=204)
 
 
 # ---------------------------------------------------------------------------
