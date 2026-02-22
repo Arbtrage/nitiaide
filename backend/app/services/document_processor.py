@@ -366,14 +366,14 @@ class DocumentProcessor:
                     strategy=shared.Strategy.HI_RES,
                     languages=["eng"],
                     split_pdf_page=True,
-                    split_pdf_allow_failed=True,
                     split_pdf_concurrency_level=15,
                     pdf_infer_table_structure=True,
                     skip_infer_table_types=[],
                     include_page_breaks=True,
                 )
             )
-            response = await client.general.partition_async(request=req)
+            import asyncio
+            response = await asyncio.to_thread(client.general.partition, request=req)
             elements = list(response.elements) if response.elements else []
             logger.info(
                 "Unstructured API returned %d elements for %s",
