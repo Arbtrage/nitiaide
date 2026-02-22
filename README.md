@@ -1,4 +1,4 @@
-# FinHub -- AI-Powered Financial Reporting Compliance Engine
+# NitiAIDE NFRA Compliance Check Engine -- AI-Powered Financial Reporting Compliance Engine
 
 An end-to-end AI compliance validation platform built for the **IndiaAI NFRA (National Financial Reporting Authority) Challenge**. FinHub ingests regulatory PDF documents and financial statements, extracts structured data using advanced OCR and table detection, stores document embeddings in a vector database for semantic retrieval, and validates each document section against Indian regulatory frameworks using a multi-phase, research-assistant-style AI pipeline. The system produces explainable compliance and non-compliance reports with rule citations, evidence excerpts, and actionable recommendations.
 
