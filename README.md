@@ -1,6 +1,11 @@
-# NitiAIDE NFRA Compliance Check Engine -- AI-Powered Financial Reporting Compliance Engine
+# NITI Aide -- AI-Powered NFRA Compliance Engine
 
-An end-to-end AI compliance validation platform built for the **IndiaAI NFRA (National Financial Reporting Authority) Challenge**. FinHub ingests regulatory PDF documents and financial statements, extracts structured data using advanced OCR and table detection, stores document embeddings in a vector database for semantic retrieval, and validates each document section against Indian regulatory frameworks using a multi-phase, research-assistant-style AI pipeline. The system produces explainable compliance and non-compliance reports with rule citations, evidence excerpts, and actionable recommendations.
+
+An end-to-end AI compliance validation platform built for the **IndiaAI NFRA (National Financial Reporting Authority) Challenge**. NITI Aide ingests regulatory PDF documents and financial statements, extracts structured data using advanced OCR and table detection, stores document embeddings in a vector database for semantic retrieval, and validates each document section against Indian regulatory frameworks using a multi-phase, research-assistant-style AI pipeline. The system produces explainable compliance and non-compliance reports with rule citations, evidence excerpts, and actionable recommendations.
+
+<p align="center">
+  <img src="readme_assets/homepage_screenshot.png" alt="NITI Aide Dashboard" width="90%"/>
+</p>
 
 ---
 
@@ -43,6 +48,10 @@ The engine is configurable for testing compliance across large volumes of struct
 
 ## Solution Architecture
 
+<p align="center">
+  <img src="readme_assets/architecture_diagram.jpg" alt="NITI Aide System Architecture" width="95%"/>
+</p>
+
 ```
                          +------------------+
                          |   Next.js 14+    |
@@ -80,6 +89,10 @@ The engine is configurable for testing compliance across large volumes of struct
 ---
 
 ## Key Features
+
+<p align="center">
+  <img src="readme_assets/features.png" alt="NITI Aide Application Features and Navigation" width="95%"/>
+</p>
 
 ### Document Processing
 - High-resolution OCR processing of scanned and digital PDFs with automatic layout detection.
@@ -349,6 +362,10 @@ Each uploaded document passes through:
 
 ### Dashboard (Home Page)
 
+<p align="center">
+  <img src="readme_assets/homepage_screenshot.png" alt="NITI Aide Dashboard" width="90%"/>
+</p>
+
 The landing page provides an at-a-glance overview of the system's state:
 
 - **Statistics Cards**: Documents Ingested, Compliance Checks Run, Average Compliance Score, and Active Frameworks, each retrieved via an optimised server-side aggregation query.
@@ -356,6 +373,10 @@ The landing page provides an at-a-glance overview of the system's state:
 - **Quick Actions**: One-click buttons to navigate to Upload Document, Run Compliance Check, or Search Standards.
 
 ### Document Ingestion
+
+<p align="center">
+  <img src="readme_assets/ingest_screenshot.png" alt="NITI Aide Document Ingestion" width="90%"/>
+</p>
 
 - **Drag-and-Drop Upload**: Supports PDF, DOCX, and image files. Files can be dropped or selected via a styled upload zone.
 - **Document Type Selector**: Tag uploads as Financial Statement, Audit Report, Annual Report, or Regulatory Document.
