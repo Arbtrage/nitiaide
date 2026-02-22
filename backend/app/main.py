@@ -138,11 +138,10 @@ async def lifespan(app: FastAPI):
     mongo_client: AsyncIOMotorClient = AsyncIOMotorClient(
         settings.MONGODB_URL,
         maxPoolSize=20,
-        minPoolSize=5,
+        minPoolSize=0,
         maxIdleTimeMS=45_000,
         connectTimeoutMS=10_000,
         serverSelectionTimeoutMS=10_000,
-        socketTimeoutMS=20_000,
         retryWrites=True,
         retryReads=True,
     )
