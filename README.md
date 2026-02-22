@@ -4,6 +4,8 @@ An end-to-end AI compliance validation platform built for the **IndiaAI NFRA (Na
 
 ---
 
+You can access the application at http://52.11.203.35/ .
+
 ## Table of Contents
 
 1. [Problem Statement](#problem-statement)
